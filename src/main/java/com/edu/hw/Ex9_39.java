@@ -12,7 +12,7 @@ public class Ex9_39 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the word");
         String word = scanner.nextLine();
-
+        //first way
         System.out.println(word.substring(3) + word.substring(0, 3));
         //second way
         char[] letters = word.toCharArray();
