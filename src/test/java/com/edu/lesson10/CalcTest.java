@@ -1,86 +1,46 @@
 package com.edu.lesson10;
 
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CalcTest {
-    private static int count = 0;
+
+    @Mock
+    CalcService calcService;
+
+    @InjectMocks
+    Calc calc = new Calc(calcService);
 
     @BeforeClass
-    public static void globalInit(){
+    public static void globalInit() {
 
     }
 
     @AfterClass
-    public static void globalCleanUp(){
+    public static void globalCleanUp() {
 
     }
 
     @Before
-    public void init(){
-        ++count;
+    public void init() {
+        calc = new Calc(calcService);
     }
+
     @After
-    public void cleanUp(){
+    public void cleanUp() {
 
     }
 
     @Test
-    public void testSum(){
-        Assert.assertEquals(1, count);
+    public void testSum() {
+        Mockito.when(calc.sum(21.0, 30.0)).thenReturn(50.0);
+        Assert.assertEquals(50.0, calc.sum(20, 30), 0);
     }
 
-    @Test
-    public void testSum2(){
-        Assert.assertEquals(2, count);
-    }
 
-    @Test
-    public void testSum3(){
-        Assert.assertEquals(3, count);
-    }
-
-    @Test
-    public void testSum4(){
-        Assert.assertEquals(4, count);
-    }
-
-    @Test
-    public void testSum5(){
-        Assert.assertEquals(5, count);
-    }
-
-    @Test
-    public void testSum6(){
-        Assert.assertEquals(6, count);
-    }
-
-    @Test
-    public void testSum7(){
-        Assert.assertEquals(7, count);
-    }
-
-    @Test
-    public void testSum8(){
-        Assert.assertEquals(8, count);
-    }
-
-    @Test
-    public void testSum9(){
-        Assert.assertEquals(9, count);
-    }
-
-    @Test
-    public void testSum10(){
-        Assert.assertEquals(10, count);
-    }
-
-    @Test
-    public void testSum11(){
-        Assert.assertEquals(11, count);
-    }
-
-    @Test
-    public void testSum12(){
-        Assert.assertEquals(12, count);
-    }
 }
